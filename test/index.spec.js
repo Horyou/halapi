@@ -11,7 +11,9 @@ test('Halapi default options', (t) => {
   }, 'missing endpoint property', 'should throw if no endpoint property');
 
   const endpoint = 'foo';
-  const api = new Halapi({endpoint: endpoint});
+  const api = new Halapi({
+    endpoint: endpoint
+  });
 
   t.ok(has(api.options, 'linkAttr'), 'linkAttr should be defined');
   t.equal(get(api.options, 'linkAttr'), 'links', 'linkAttr should equal `links`');
