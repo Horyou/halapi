@@ -1,27 +1,18 @@
 {
   "parser" : "babel-eslint",
   "env": {
-    "node" : 1,
-    "browser" : 1
+    "node" : true,
+    "es6": true
   },
   "ecmaFeatures": {
     "jsx": 1,
     "classes": 1,
     "destructuring": 1
   },
-  "globals": {
-    "__DEV__"    : false,
-    "__PROD__"   : false,
-    "__DEBUG__"  : false,
-    "__CLIENT__" : false,
-    "__SERVER__" : false,
-    "__CORDOVA__" : false,
-    "__WEB__" : false,
-    "__VERSION__" : false,
-    "superagent": false,
-    "Media": false
-  },
-  "plugins": [],
+  "globals": {},
+  "plugins": [
+    "babel"
+  ],
   "rules": {
     "comma-dangle": [1, "never"],
     "no-cond-assign": 2,
