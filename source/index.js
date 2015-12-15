@@ -1,9 +1,19 @@
 'use strict';
+import defaults from 'lodash/object/defaults';
+import has from 'lodash/object/has';
 
 class HalApi {
-  constructor () {}
+  constructor (options) {
+    this.options = defaults({
+      linkAttr: 'links'
+    }, options || {});
 
-  fetch (path) {
+    if (!has(this.options, 'endpoint')) {
+      throw new Error('missing endpoint property');
+    }
+  }
+
+  fetch () {
 
   }
 }
