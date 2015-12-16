@@ -4,7 +4,6 @@ import got from 'got';
 import fs from 'mz/fs';
 import path from 'path';
 
-export default function server (routes = []) {
 export function fixtures (name) {
   const filename = path.resolve(__dirname, path.join('../../test/fixtures/', name));
 
@@ -13,6 +12,7 @@ export function fixtures (name) {
   });
 }
 
+export function server (routes = []) {
   const request = function (url) {
     return got(url);
   };

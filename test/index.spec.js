@@ -2,7 +2,7 @@
 import Halapi from '../source';
 import test from 'tape';
 import { has, get } from 'lodash/object';
-import server from './helpers';
+import { server } from './helpers';
 import Resource from '../source/resource';
 
 test('Halapi default options', (t) => {

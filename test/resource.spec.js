@@ -2,7 +2,7 @@
 import Resource from '../source/resource';
 import test from 'tape';
 import has from 'lodash/object/has';
-import server from './helpers';
+import { server } from './helpers';
 import got from 'got';
 
 test('Resource fetch', (t) => {
