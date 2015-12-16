@@ -7,7 +7,7 @@ var host = exports.host = 'localhost';
 
 exports.createServer = function () {
   return getPort().then(function (port) {
-    var s = http.createServer(function (req, resp) {
+    const s = http.createServer(function (req, resp) {
       s.emit(req.url, req, resp);
     });
 
