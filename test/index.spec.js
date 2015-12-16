@@ -21,30 +21,6 @@ test('Halapi default options', (t) => {
   t.equal(get(api.options, 'endpoint'), endpoint, 'should have endpoint option');
 });
 
-test('Halapi url', (t) => {
-  t.test('test with endpoint terminating with a slash', (nt) => {
-    nt.plan(2);
-
-    const api = new Halapi({
-      endpoint: 'http://localhost/'
-    });
-
-    nt.equal(api.url('/api'), 'http://localhost/api');
-    nt.equal(api.url('api'), 'http://localhost/api');
-  });
-
-  t.test('test with endpoint not terminating with a slash', (nt) => {
-    nt.plan(2);
-
-    const api = new Halapi({
-      endpoint: 'http://localhost'
-    });
-
-    nt.equal(api.url('/api'), 'http://localhost/api');
-    nt.equal(api.url('api'), 'http://localhost/api');
-  });
-});
-
 test('Halapi request', (t) => {
   t.plan(2);
 
