@@ -21,4 +21,8 @@ export default class Resource {
   save (body) {
     this._data = body;
   }
+
+  links () {
+    return this._data[this.options.linkAttr];
+  }
 }
