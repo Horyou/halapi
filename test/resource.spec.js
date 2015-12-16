@@ -91,6 +91,9 @@ test('Resource link', (t) => {
       })
       .then((house) => {
         t.ok(house instanceof Resource, 'should resolve a resource');
+      });
+  });
+});
 
 test('Resource bad link', (t) => {
   t.plan(1);
