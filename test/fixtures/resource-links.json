@@ -25,7 +25,8 @@
         },
         "address": {
           "href": "/house/1/address"
-        }
+        },
+        "badLink": {}
       }
     }
   }]

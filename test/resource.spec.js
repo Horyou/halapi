@@ -90,6 +90,17 @@ test('Resource link', (t) => {
       })
       .then((house) => {
         t.ok(house instanceof Resource, 'should resolve a resource');
+
+test('Resource bad link', (t) => {
+  t.plan(2);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.link('badLink');
+
+        t.equal(link, null, 'should not return a promise for a link without href');
       });
   });
 });
