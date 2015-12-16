@@ -92,7 +92,7 @@ test('Resource link', (t) => {
         t.ok(house instanceof Resource, 'should resolve a resource');
 
 test('Resource bad link', (t) => {
-  t.plan(2);
+  t.plan(1);
 
   apiServer('resource-links.json').then((api) => {
     Resource
