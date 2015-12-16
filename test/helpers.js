@@ -3,8 +3,8 @@ import { createServer } from './_server';
 import got from 'got';
 
 export default function server () {
-  const request = function (path) {
-    return got(this.url(path));
+  const request = function (url) {
+    return got(url);
   };
 
   return createServer().then((s) => {
