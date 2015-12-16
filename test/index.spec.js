@@ -22,12 +22,13 @@ test('Halapi default options', (t) => {
 });
 
 test('Halapi request', (t) => {
-  t.plan(2);
+  t.plan(1);
 
   server().then((api) => {
     const result = api.request('/api');
-
     t.equal(typeof result.then, 'function');
+  });
+});
 
     result.then((response) => {
       t.equal(response.body, 'ok');
