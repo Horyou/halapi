@@ -164,3 +164,17 @@ test('Resource: get attribute of a linked resource', (t) => {
       });
   });
 });
+
+test('Resource: data fields', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        const data = person.data();
+
+        t.ok(!has(data, api.options.linkAttr), 'should not export links property');
+      });
+  });
+});
