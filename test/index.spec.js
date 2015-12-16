@@ -22,15 +22,15 @@ test('Halapi default options', (t) => {
   t.equal(get(api.options, 'endpoint'), endpoint, 'should have endpoint option');
 });
 
-test('Halapi request', (t) => {
-  t.plan(1);
-
-  server().then((api) => {
-    const result = api.request('/api');
-
-    t.equal(typeof result.then, 'function');
-  });
-});
+// test('Halapi request', (t) => {
+//   t.plan(1);
+//
+//   server().then((api) => {
+//     const result = api.request('/api');
+//
+//     t.equal(typeof result.then, 'function');
+//   });
+// });
 
 test('Halapi resource', (t) => {
   t.plan(2);

@@ -14,10 +14,14 @@ class HalApi {
     }
   }
 
-  request (url) {}
+  request (fn) {
+    if (fn) {
+      Resource.request = fn;
+    }
+  }
 
   resource (path) {
-    return Resource.fetch(path, this.options, this.request);
+    return Resource.fetch(path, this.options);
   }
 }
 

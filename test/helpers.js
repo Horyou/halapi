@@ -13,10 +13,6 @@ export function fixtures (name) {
 }
 
 export function server (routes = []) {
-  const request = function (url) {
-    return got(url);
-  };
-
   return createServer().then((s) => {
     s.on('/api', (req, res) => {
       res.end('ok');
@@ -48,7 +44,9 @@ export function server (routes = []) {
       endpoint: s.url
     });
 
-    api.request = request.bind(api);
+    api.request((url) => {
+      return got(url);
+    });
 
     return api;
   });

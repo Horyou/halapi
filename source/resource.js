@@ -1,11 +1,15 @@
 import utils from './utils';
 
 export default class Resource {
-  static fetch (path, options, request) {
+  static request (url) {
+    throw new Error('Not implemented');
+  }
+
+  static fetch (path, options) {
     const { endpoint } = options;
     const url = utils.url(endpoint, path);
 
-    return request(url).then((response) => {
+    return Resource.request(url).then((response) => {
       const resource = new Resource(path, options);
 
       resource.save(response.body);
