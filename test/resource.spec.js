@@ -16,3 +16,16 @@ test('Resource fetch', (t) => {
     });
   });
 });
+
+test('Resource data', (t) => {
+  t.plan(2);
+
+  server().then((api) => {
+    Resource
+      .fetch('/api', api.options, api.request)
+      .then((resource) => {
+        t.ok(resource instanceof Resource, 'should return a Resource instance');
+        t.equal(resource._data, 'ok', 'resource data should hold the response body');
+      });
+  });
+});

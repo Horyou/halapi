@@ -8,6 +8,7 @@ export default class Resource {
     return request(url).then((response) => {
       const resource = new Resource(path, options);
 
+      resource.save(response.body);
       return resource;
     });
   }
@@ -15,5 +16,9 @@ export default class Resource {
   constructor (path, options) {
     this._path = path;
     this.options = options;
+  }
+
+  save (body) {
+    this._data = body;
   }
 }
