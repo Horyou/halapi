@@ -1,8 +1,18 @@
 import Halapi from '../source';
 import { createServer } from './_server';
 import got from 'got';
+import fs from 'mz/fs';
+import path from 'path';
 
 export default function server (routes = []) {
+export function fixtures (name) {
+  const filename = path.resolve(__dirname, path.join('../../test/fixtures/', name));
+
+  return fs.readFile(filename).then((content) => {
+    return JSON.parse(content);
+  });
+}
+
   const request = function (url) {
     return got(url);
   };

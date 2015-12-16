@@ -31,6 +31,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "lodash": "^3.10.1",
     "mocha": "^2.3.4",
+    "mz": "^2.1.0",
     "pify": "^2.3.0",
     "pinkie-promise": "^2.0.0",
     "remap-istanbul": "^0.4.0",
