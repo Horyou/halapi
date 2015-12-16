@@ -1,0 +1,10 @@
+{
+  "routes": [{
+    "path": "/person/1",
+    "response": {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Foo"
+    }
+  }]
+}
