@@ -2,7 +2,7 @@
 import Resource from '../source/resource';
 import test from 'tape';
 import has from 'lodash/object/has';
-import { server } from './helpers';
+import { server, fixtures } from './helpers';
 import got from 'got';
 
 test('Resource fetch', (t) => {
@@ -32,39 +32,24 @@ test('Resource data', (t) => {
   });
 });
 
-test('Resource links', (t) => {
-  t.plan(3);
+test('Resource links with default `links` attributes', (t) => {
+  t.plan(2);
 
-  const routes = [{
-    path: '/person/1',
-    response: {
-      id: 1,
-      firstname: 'John',
-      lastname: 'Foo',
-      links: {
-        self: {
-          href: '/person/1'
-        },
-        house: {
-          href: '/person/1/house'
-        }
-      }
-    }
-  }];
+  fixtures('resource-links.json').then((routes) => {
+    server(routes).then((api) => {
+      /* override to force json */
+      api.request = (url) => {
+        return got(url, { json: true });
+      };
 
-  server(routes).then((api) => {
-    // override to force json
-    api.request = (url) => {
-      return got(url, { json: true });
-    }
+      Resource
+        .fetch('/person/1', api.options, api.request)
+        .then((resource) => {
+          const links = resource.links();
 
-    Resource
-      .fetch('/person/1', api.options, api.request)
-      .then((resource) => {
-        const links = resource.links();
-
-        t.ok(has(links, 'self'));
-        t.ok(has(links, 'house'));
-      });
+          t.ok(has(links, 'self'));
+          t.ok(has(links, 'house'));
+        });
+    });
   });
 });

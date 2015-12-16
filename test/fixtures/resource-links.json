@@ -1,0 +1,18 @@
+{
+  "routes": [{
+    "path": "/person/1",
+    "response": {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Foo",
+      "links": {
+        "self": {
+          "href": "/person/1"
+        },
+        "house": {
+          "href": "/person/1/house"
+        }
+      }
+    }
+  }]
+}
