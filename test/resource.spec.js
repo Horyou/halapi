@@ -63,3 +63,33 @@ test('Resource links with `_links` attributes', (t) => {
       });
   });
 });
+
+test('Resource unexisting link', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((resource) => {
+        t.equal(resource.link('home'), null, 'undefined link should be null');
+      });
+  });
+});
+
+test('Resource link', (t) => {
+  t.plan(2);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.link('house');
+
+        t.ok(typeof link.then, 'should return a promise');
+        return link;
+      })
+      .then((house) => {
+        t.ok(house instanceof Resource, 'should resolve a resource');
+      });
+  });
+});

@@ -29,4 +29,24 @@ export default class Resource {
   links () {
     return this._data[this.options.linkAttr];
   }
+
+  link (name) {
+    const _links = this.links();
+
+    if (!_links) {
+      return null;
+    }
+
+    const _link = _links[name];
+
+    if (!_link) {
+      return null;
+    }
+
+    if (_link.href) {
+      return Resource.fetch(_link.href, this.options);
+    }
+
+    return null;
+  }
 }
