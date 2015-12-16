@@ -5,15 +5,17 @@ import test from 'tape';
 test('Utils url', (t) => {
   t.test('test with endpoint terminating with a slash', (nt) => {
     nt.plan(2);
+    const expected = 'http://localhost/api';
 
-    nt.equal(utils.url('http://localhost/', '/api'), 'http://localhost/api');
-    nt.equal(utils.url('http://localhost/', 'api'), 'http://localhost/api');
+    nt.equal(utils.url('http://localhost/', '/api'), expected, 'url should not have duplicate `/` for path');
+    nt.equal(utils.url('http://localhost/', 'api'), expected, 'url should not have duplicate `/` for path');
   });
 
   t.test('test with endpoint not terminating with a slash', (nt) => {
     nt.plan(2);
+    const expected = 'http://localhost/api';
 
-    nt.equal(utils.url('http://localhost', '/api'), 'http://localhost/api');
-    nt.equal(utils.url('http://localhost', 'api'), 'http://localhost/api');
+    nt.equal(utils.url('http://localhost', '/api'), expected, 'url should not have duplicate `/` for path');
+    nt.equal(utils.url('http://localhost', 'api'), expected, 'url should not have duplicate `/` for path');
   });
 });

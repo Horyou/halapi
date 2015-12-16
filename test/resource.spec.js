@@ -47,8 +47,8 @@ test('Resource links with default `links` attributes', (t) => {
         .then((resource) => {
           const links = resource.links();
 
-          t.ok(has(links, 'self'));
-          t.ok(has(links, 'house'));
+          t.ok(has(links, 'self'), 'should have the `self` link');
+          t.ok(has(links, 'house'), 'should have the `house` link');
         });
     });
   });
@@ -71,8 +71,8 @@ test('Resource links with default `_links` attributes', (t) => {
         .then((resource) => {
           const links = resource.links();
 
-          t.ok(has(links, 'self'));
-          t.ok(has(links, 'house'));
+          t.ok(has(links, 'self'), 'should have the `self` link');
+          t.ok(has(links, 'house'), 'should have the `house` link');
         });
     });
   });
