@@ -104,3 +104,17 @@ test('Resource bad link', (t) => {
       });
   });
 });
+
+test('Resource without links', (t) => {
+  t.plan(1);
+
+  apiServer('resource-nolinks.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.link('foo');
+
+        t.equal(link, null, 'should not return a promise if no links');
+      });
+  });
+});
