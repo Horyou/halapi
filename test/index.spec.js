@@ -3,6 +3,7 @@ import Halapi from '../source';
 import test from 'tape';
 import { has, get } from 'lodash/object';
 import server from './helpers';
+import Resource from '../source/resource';
 
 test('Halapi default options', (t) => {
   t.plan(4);
@@ -26,13 +27,21 @@ test('Halapi request', (t) => {
 
   server().then((api) => {
     const result = api.request('/api');
+
     t.equal(typeof result.then, 'function');
   });
 });
 
-    result.then((response) => {
-      t.equal(response.body, 'ok');
-      t.end();
+test('Halapi resource', (t) => {
+  t.plan(2);
+
+  server().then((api) => {
+    const result = api.resource('/api');
+
+    t.equal(typeof result.then, 'function');
+    result.then((resource) => {
+      t.ok(resource instanceof Resource, 'should received a resource');
+      // t.end();
     });
   });
 });

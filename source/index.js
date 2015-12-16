@@ -1,7 +1,7 @@
 'use strict';
 import defaults from 'lodash/object/defaults';
 import has from 'lodash/object/has';
-import utils from './utils';
+import Resource from './resource';
 
 class HalApi {
   constructor (options) {
@@ -15,6 +15,10 @@ class HalApi {
   }
 
   request (url) {}
+
+  resource (path) {
+    return Resource.fetch(path, this.options, this.request);
+  }
 }
 
 module.exports = HalApi;
