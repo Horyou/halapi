@@ -2,6 +2,7 @@
 import Resource from '../source/resource';
 import test from 'tape';
 import has from 'lodash/object/has';
+import { isUndefined } from 'lodash/lang';
 import { server, apiServer } from './helpers';
 import got from 'got';
 
@@ -115,6 +116,30 @@ test('Resource without links', (t) => {
         const link = person.link('foo');
 
         t.equal(link, null, 'should not return a promise if no links');
+      });
+  });
+});
+
+test('Resource get attribute', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        t.equal(person.get('firstname'), 'John', 'should return field value');
+      });
+  });
+});
+
+test('Resource get wrong attribute', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        t.ok(isUndefined(person.get('firsname')), 'should return undefined');
       });
   });
 });

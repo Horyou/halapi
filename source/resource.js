@@ -26,6 +26,10 @@ export default class Resource {
     this._data = body;
   }
 
+  get (name) {
+    return (this._data || {})[name];
+  }
+
   links () {
     return this._data[this.options.linkAttr];
   }
