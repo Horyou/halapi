@@ -35,12 +35,36 @@ test('Resource data', (t) => {
 test('Resource links with default `links` attributes', (t) => {
   t.plan(2);
 
-  fixtures('resource-links.json').then((routes) => {
-    server(routes).then((api) => {
+  fixtures('resource-links.json').then((data) => {
+    server(data.routes).then((api) => {
       /* override to force json */
       api.request = (url) => {
         return got(url, { json: true });
       };
+
+      Resource
+        .fetch('/person/1', api.options, api.request)
+        .then((resource) => {
+          const links = resource.links();
+
+          t.ok(has(links, 'self'));
+          t.ok(has(links, 'house'));
+        });
+    });
+  });
+});
+
+test('Resource links with default `_links` attributes', (t) => {
+  t.plan(2);
+
+  fixtures('resource-_links.json').then((data) => {
+    server(data.routes).then((api) => {
+      /* override to force json */
+      api.request = (url) => {
+        return got(url, { json: true });
+      };
+
+      api.options.linkAttr = '_links';
 
       Resource
         .fetch('/person/1', api.options, api.request)
