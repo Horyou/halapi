@@ -146,3 +146,21 @@ test('Resource get wrong attribute', (t) => {
       });
   });
 });
+
+test('Resource: get attribute of a linked resource', (t) => {
+  t.plan(2);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.link('house');
+
+        t.ok(typeof link.then, 'should return a promise');
+        return link;
+      })
+      .then((house) => {
+        t.equal(house.get('name'), 'The little house', 'should return the linked field value');
+      });
+  });
+});
