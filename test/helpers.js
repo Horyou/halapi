@@ -51,3 +51,21 @@ export function server (routes = []) {
     return api;
   });
 }
+
+export function apiServer (name) {
+  return fixtures(name)
+    .then((data) => {
+      return data.routes;
+    })
+    .then((routes) => {
+      return server(routes);
+    })
+    .then((api) => {
+      /* override to force json */
+      api.request((url) => {
+        return got(url, { json: true });
+      });
+
+      return api;
+    });
+}
