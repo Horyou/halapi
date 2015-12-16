@@ -2,6 +2,8 @@
 import Halapi from '../source';
 import test from 'tape';
 import { has, get } from 'lodash/object';
+import { createServer } from './_server';
+import got from 'got';
 
 test('Halapi default options', (t) => {
   t.plan(4);
@@ -44,6 +46,33 @@ test('Halapi url', (t) => {
   });
 });
 
-test('Halapi fetch', (t) => {
+test('Halapi request', (t) => {
+  t.plan(2);
 
+  const request = function (path) {
+    return got(this.url(path));
+  };
+
+  createServer().then((s) => {
+    s.on('/api', (req, res) => {
+      res.end('ok');
+    });
+
+    s.listen(s.port);
+
+    const api = new Halapi({
+      endpoint: s.url
+    });
+
+    api.request = request.bind(api);
+
+    const result = api.request('/api');
+
+    t.equal(typeof result.then, 'function');
+
+    result.then((response) => {
+      t.equal(response.body, 'ok');
+      t.end();
+    });
+  });
 });

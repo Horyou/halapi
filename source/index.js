@@ -22,6 +22,8 @@ class HalApi {
       path.charAt(0) === '/' ? path.substring(1) : path
     ].join('/');
   }
+
+  request (url) {}
 }
 
 module.exports = HalApi;
