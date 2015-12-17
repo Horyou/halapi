@@ -1,12 +1,14 @@
 'use strict';
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
 var babel = require('gulp-babel');
 var clean = require('gulp-clean');
 var sourcemaps = require('gulp-sourcemaps');
 var coveralls = require('gulp-coveralls');
 var istanbul = require('gulp-istanbul');
 var eslint = require('gulp-eslint');
+var tape = require('gulp-tape');
+var tapColorize = require('tap-colorize');
+
 var path = require('path');
 require('colors');
 
@@ -52,7 +54,9 @@ var _test = function () {
   return gulp.src(files.testBuild, {
       read: false
     })
-    .pipe(mocha());
+    .pipe(tape({
+      reporter: tapColorize()
+    }));
 };
 
 var _clean = function (dir) {
@@ -76,14 +80,14 @@ gulp.task('pre-test', ['build:all'], function () {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test:mocha', ['build:all', 'pre-test'], function () {
+gulp.task('test:tape', ['build:all', 'pre-test'], function () {
   return _test()
     .pipe(istanbul.writeReports({
       reporters: ['json']
     }));
 });
 
-gulp.task('remap-istanbul', ['test:mocha'], function (cb) {
+gulp.task('remap-istanbul', ['test:tape'], function (cb) {
   var loadCoverage = require('remap-istanbul/lib/loadCoverage');
   var remap = require('remap-istanbul/lib/remap');
   var writeReport = require('remap-istanbul/lib/writeReport');
@@ -111,7 +115,7 @@ gulp.task('coveralls', ['test-with-reports'], function () {
 });
 
 
-gulp.task('test-with-reports', ['pre-test', 'test:mocha', 'remap-istanbul']);
+gulp.task('test-with-reports', ['pre-test', 'test:tape', 'remap-istanbul']);
 gulp.task('test:all', ['build:all'], _test);
 
 gulp.task('clean:all', _clean('build'));
