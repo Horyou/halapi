@@ -1,5 +1,5 @@
 import utils from './utils';
-import { omit } from 'lodash/object';
+import _ from 'lodash';
 
 export default class Resource {
   static request (url) {
@@ -29,7 +29,7 @@ export default class Resource {
   }
 
   data () {
-    return omit(this._data, this.options.linkAttr);
+    return _.omit(this._data, this.linkAttr);
   }
 
   get (name) {
