@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import Resource from './resource';
 
-class HalApi {
+export default class HalApi {
   constructor (options) {
     this.options = _.defaults({
       linkAttr: 'links'
@@ -23,5 +23,3 @@ class HalApi {
     return Resource.fetch(path, this.options);
   }
 }
-
-module.exports = HalApi;
