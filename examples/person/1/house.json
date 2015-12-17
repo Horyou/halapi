@@ -1,0 +1,10 @@
+{
+  "hid": 123,
+  "name": "The little house",
+  "links": {
+    "self": {
+      "href": "/person/1/house.json"
+    },
+    "badLink": {}
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script src="../node_modules/lodash/index.js"></script>
+    <script src="../dist/halapi.umd.js"></script>
+    <script>
+      var api = new halapi({
+        endpoint: 'http://localhost:3000/examples'
+      });
+      api.request(function (url) {
+        return new Promise(function (res, rej) {
+          var req = new XMLHttpRequest();
+          req.open('GET', url, true);
+
+          req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+               if(req.status == 200)
+                res({body: JSON.parse(req.responseText)});
+               else
+                rej("Error loading page\n");
+            }
+          };
+          req.send(null);
+        });
+      });
+
+      api.resource('person/1.json').then(function(person) {
+        console.log(person.get('firstname'));
+
+        person.links();
+        person.link('house').then(function (house) {
+          console.log(house.get('name'));
+        })
+      });
+    </script>
+  </body>
+</html>
