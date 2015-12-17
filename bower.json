@@ -1,0 +1,37 @@
+{
+  "name": "halapi",
+  "version": "0.1.0",
+  "description": "Naïve wrapper around HAL API to ease fetching the recursive links",
+  "main": "dist/halapi.umd.js",
+  "authors": [
+    {
+      "name": "Stéphane Bachelier",
+      "email": "stephane.bachelier@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "rest",
+    "hal",
+    "json",
+    "resource",
+    "fetch"
+  ],
+  "homepage": "https://github.com/stephanebachelier/halapi",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.10.1"
+  }
+}
