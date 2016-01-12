@@ -1,3 +1,13 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/stephanebachelier/halapi/compare/0.1.1...v0.1.1) (2016-01-12)
+
+
+### Bug Fixes
+
+* **package:** fix main entry ([74f03da](https://github.com/stephanebachelier/halapi/commit/74f03da))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/stephanebachelier/halapi/compare/0.1.0...v0.1.0) (2015-12-17)
 
