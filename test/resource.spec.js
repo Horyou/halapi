@@ -177,3 +177,27 @@ test('Resource: data fields', (t) => {
       });
   });
 });
+
+test('Resource: response data', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((resource) => {
+        t.equal(resource.json(), resource._data, 'fetched data should be exported using json()');
+      });
+  });
+});
+
+test('Resource: request path', (t) => {
+  t.plan(1);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((person) => {
+        t.equal(person.path(), '/person/1', 'should export request path');
+      });
+  });
+});
