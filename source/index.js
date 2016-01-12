@@ -4,7 +4,7 @@ import Resource from './resource';
 
 export default class HalApi {
   constructor (options) {
-    this.options = _.defaults({
+    this.options = _.extend({
       linkAttr: 'links'
     }, options || {});
 
