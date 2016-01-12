@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/stephanebachelier/halapi/compare/0.1.2...v0.1.2) (2016-01-12)
+
+
+### Bug Fixes
+
+* **package:** mark lodash as a dependency ([9893468](https://github.com/stephanebachelier/halapi/commit/9893468))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/stephanebachelier/halapi/compare/0.1.1...v0.1.1) (2016-01-12)
 
