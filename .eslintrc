@@ -124,7 +124,7 @@
     }],
     "lines-around-comment": [1, {
       "beforeBlockComment" : true,
-      "beforeLineComment"  : true
+      "beforeLineComment"  : false
     }],
     "max-nested-callbacks": [2, 3],
     "new-cap": 0,
