@@ -61,7 +61,7 @@ export function apiServer (name) {
       return server(routes);
     })
     .then((api) => {
-      /* override to force json */
+      // override to force json
       api.request((url) => {
         return got(url, { json: true });
       });
