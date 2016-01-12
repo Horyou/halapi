@@ -4,7 +4,6 @@ import test from 'tape';
 import has from 'lodash/object/has';
 import { isUndefined } from 'lodash/lang';
 import { server, apiServer } from './helpers';
-import got from 'got';
 
 test('Resource fetch', (t) => {
   t.plan(2);
