@@ -13,6 +13,9 @@
     "email": "stephane.bachelier@gmail.com"
   },
   "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-eslint": "^5.0.0-beta6",
@@ -30,7 +33,6 @@
     "gulp-eslint": "^1.1.1",
     "gulp-istanbul": "^0.10.3",
     "gulp-sourcemaps": "^1.6.0",
-    "lodash": "^3.10.1",
     "mocha": "^2.3.4",
     "mz": "^2.1.0",
     "pify": "^2.3.0",
