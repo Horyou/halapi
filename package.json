@@ -2,7 +2,7 @@
   "name": "halapi",
   "version": "0.1.1",
   "description": "My node module",
-  "main": "dist/index.js",
+  "main": "dist/halapi.umd.js",
   "scripts": {
     "test": "gulp test",
     "build": "rollup -c rollup.umd.js"
