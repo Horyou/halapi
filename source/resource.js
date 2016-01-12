@@ -28,6 +28,14 @@ export default class Resource {
     this._data = body;
   }
 
+  path () {
+    return this._path
+  }
+
+  json () {
+    return this._data
+  }
+
   data () {
     return _.omit(this._data, this.linkAttr);
   }
