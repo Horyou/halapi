@@ -1,3 +1,17 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/stephanebachelier/halapi/compare/0.1.3...v0.1.3) (2016-01-12)
+
+
+### Bug Fixes
+
+* **options:** fix options not being overridable ([5249da1](https://github.com/stephanebachelier/halapi/commit/5249da1))
+
+### Features
+
+* **resource:** add json and path methods ([887aa80](https://github.com/stephanebachelier/halapi/commit/887aa80))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/stephanebachelier/halapi/compare/0.1.2...v0.1.2) (2016-01-12)
 

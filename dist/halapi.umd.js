@@ -77,6 +77,16 @@
         this._data = body;
       }
     }, {
+      key: 'path',
+      value: function path() {
+        return this._path;
+      }
+    }, {
+      key: 'json',
+      value: function json() {
+        return this._data;
+      }
+    }, {
       key: 'data',
       value: function data() {
         return _.omit(this._data, this.linkAttr);
@@ -120,7 +130,7 @@
     function HalApi(options) {
       babelHelpers.classCallCheck(this, HalApi);
 
-      this.options = _.defaults({
+      this.options = _.extend({
         linkAttr: 'links'
       }, options || {});
 
