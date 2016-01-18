@@ -29,11 +29,11 @@ export default class Resource {
   }
 
   path () {
-    return this._path
+    return this._path;
   }
 
   json () {
-    return this._data
+    return this._data;
   }
 
   data () {
