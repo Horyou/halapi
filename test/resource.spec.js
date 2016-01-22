@@ -2,7 +2,7 @@
 import Resource from '../source/resource';
 import test from 'tape';
 import has from 'lodash/object/has';
-import { isUndefined } from 'lodash/lang';
+import { isUndefined, isEmpty } from 'lodash/lang';
 import { server, apiServer } from './helpers';
 
 test('Resource fetch', (t) => {
@@ -215,3 +215,22 @@ test('Resource: url', (t) => {
       });
   });
 })
+
+test('Resource: fetch', (t) => {
+  t.plan(4);
+
+  apiServer('resource-links.json').then((api) => {
+    const resource = new Resource('/person/1', api.options);
+
+    t.ok(isEmpty(resource.data()), 'body should not be set before fetch');
+
+    resource.fetch().then((res) => {
+      t.ok(res instanceof Resource, 'should return a Resource');
+      t.equal(resource, res, 'should return the resource');
+
+      const data = resource.data();
+
+      t.equal(data.firstname, 'John', 'body should be set after fetch');
+    });
+  });
+});

@@ -73,4 +73,13 @@ export default class Resource {
 
     return  utils.url(endpoint, this.path());
   }
+
+  fetch () {
+    return Resource.request(this.url())
+      .then((response) => {
+        this.save(response.body);
+
+        return this;
+      });
+  }
 }
