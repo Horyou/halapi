@@ -201,3 +201,17 @@ test('Resource: request path', (t) => {
       });
   });
 });
+
+test('Resource: url', (t) => {
+  t.plan(1)
+
+  apiServer('resource-links.json').then((api) => {
+    Resource
+      .fetch('/person/1', api.options)
+      .then((resource) => {
+        const endpoint = resource.options.endpoint;
+
+        t.equal(resource.url(), endpoint + '/person/1', 'should return the absolute url using url()');
+      });
+  });
+})

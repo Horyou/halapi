@@ -67,4 +67,10 @@ export default class Resource {
 
     return null;
   }
+
+  url () {
+    const { endpoint } = this.options;
+
+    return  utils.url(endpoint, this.path());
+  }
 }
