@@ -5,7 +5,7 @@
   "main": "dist/halapi.umd.js",
   "scripts": {
     "test": "gulp build:all && tape build/test/*.spec.js",
-    "build": "rollup -c rollup.umd.js"
+    "build": "gulp build:all && rollup -c rollup.umd.js"
   },
   "repository": "stephanebachelier/halapi",
   "author": {
