@@ -1,6 +1,6 @@
 {
   "name": "halapi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Naïve wrapper around HAL API to ease fetching the recursive links",
   "main": "dist/halapi.umd.js",
   "authors": [

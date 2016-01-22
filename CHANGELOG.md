@@ -1,3 +1,25 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/stephanebachelier/halapi/compare/0.2.0...v0.2.0) (2016-01-22)
+
+
+### Bug Fixes
+
+* **test:** fix failing test ([47dc348](https://github.com/stephanebachelier/halapi/commit/47dc348))
+
+### Features
+
+* **resource:** add a promise-based resource helper to retrieve a link ([a6b3866](https://github.com/stephanebachelier/halapi/commit/a6b3866))
+* **resource:** add fetch instance method ([78c340b](https://github.com/stephanebachelier/halapi/commit/78c340b))
+* **resource:** add url getter ([2485882](https://github.com/stephanebachelier/halapi/commit/2485882))
+* **resource:** change link method to return a resource ([c1e9f72](https://github.com/stephanebachelier/halapi/commit/c1e9f72))
+
+
+### BREAKING CHANGES
+
+* resource: do not return a promise anymore in case of a valid linked resource.
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/stephanebachelier/halapi/compare/0.1.3...v0.1.3) (2016-01-12)
 

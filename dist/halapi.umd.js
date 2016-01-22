@@ -50,16 +50,9 @@
     }, {
       key: 'fetch',
       value: function fetch(path, options) {
-        var endpoint = options.endpoint;
+        var resource = new Resource(path, options);
 
-        var url = utils.url(endpoint, path);
-
-        return Resource.request(url).then(function (response) {
-          var resource = new Resource(path, options);
-
-          resource.save(response.body);
-          return resource;
-        });
+        return resource.fetch();
       }
     }]);
 
@@ -117,10 +110,39 @@
         }
 
         if (_link.href) {
-          return Resource.fetch(_link.href, this.options);
+          return new Resource(_link.href, this.options);
         }
 
         return null;
+      }
+    }, {
+      key: 'resource',
+      value: function resource(name) {
+        var link = this.link(name);
+
+        if (!link) {
+          return Promise.reject(new Error('The resource <' + name + '> does not exists'));
+        }
+
+        return Promise.resolve(link.fetch());
+      }
+    }, {
+      key: 'url',
+      value: function url() {
+        var endpoint = this.options.endpoint;
+
+        return utils.url(endpoint, this.path());
+      }
+    }, {
+      key: 'fetch',
+      value: function fetch() {
+        var _this = this;
+
+        return Resource.request(this.url()).then(function (response) {
+          _this.save(response.body);
+
+          return _this;
+        });
       }
     }]);
     return Resource;
