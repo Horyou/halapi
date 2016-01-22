@@ -80,16 +80,14 @@ test('Resource link', (t) => {
   t.plan(2);
 
   apiServer('resource-links.json').then((api) => {
-    Resource
-      .fetch('/person/1', api.options)
+    const resource = new Resource('/person/1', api.options);
+
+    resource.fetch()
       .then((person) => {
         const link = person.link('house');
 
-        t.ok(typeof link.then, 'should return a promise');
-        return link;
-      })
-      .then((house) => {
-        t.ok(house instanceof Resource, 'should resolve a resource');
+        t.ok(link instanceof Resource, 'link should return a Resource');
+        t.equal(link.path(), '/person/1/house', 'should return a promise');
       });
   });
 });
@@ -118,6 +116,27 @@ test('Resource without links', (t) => {
         const link = person.link('foo');
 
         t.equal(link, null, 'should not return a promise if no links');
+      });
+  });
+});
+
+test('Resource linked resource', (t) => {
+  t.plan(3);
+
+  apiServer('resource-links.json').then((api) => {
+    const resource = new Resource('/person/1', api.options);
+
+    resource.fetch()
+      .then((person) => {
+        const link = person.link('house');
+
+        return link.fetch();
+      })
+      .then((house) => {
+        t.ok(house instanceof Resource, 'should resolve a resource');
+        t.equal(house.path(), '/person/1/house', 'should have the correct path');
+
+        t.equal(house.data().name, 'The little house', 'should have the correct data');
       });
   });
 });

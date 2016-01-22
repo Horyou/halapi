@@ -62,7 +62,7 @@ export default class Resource {
     }
 
     if (_link.href) {
-      return Resource.fetch(_link.href, this.options);
+      return new Resource(_link.href, this.options);
     }
 
     return null;
