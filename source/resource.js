@@ -68,7 +68,7 @@ export default class Resource {
     if (!link) {
       return Promise.reject(new Error('The resource <' + name + '> does not exists'));
     }
-    
+
     return Promise.resolve(link.fetch());
   }
 
