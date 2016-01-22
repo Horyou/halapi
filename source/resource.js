@@ -7,15 +7,9 @@ export default class Resource {
   }
 
   static fetch (path, options) {
-    const { endpoint } = options;
-    const url = utils.url(endpoint, path);
+    const resource = new Resource(path, options);
 
-    return Resource.request(url).then((response) => {
-      const resource = new Resource(path, options);
-
-      resource.save(response.body);
-      return resource;
-    });
+    return resource.fetch();
   }
 
   constructor (path, options) {
