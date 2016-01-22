@@ -141,6 +141,44 @@ test('Resource linked resource', (t) => {
   });
 });
 
+test('Resource: resource helper with a valid link', (t) => {
+  t.plan(4);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource.fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.resource('house');
+
+        t.equal(typeof link.then, 'function', 'should return a promise');
+
+        return link;
+      })
+      .then(value => {
+        t.ok(value instanceof Resource, 'link should return a Resource');
+        t.equal(value.path(), '/person/1/house', 'should have the correct path');
+        t.equal(value.data().name, 'The little house', 'should have been fetched');
+      });
+  });
+});
+
+test('Resource: resource helper with an invalid link', (t) => {
+  t.plan(4);
+
+  apiServer('resource-links.json').then((api) => {
+    Resource.fetch('/person/1', api.options)
+      .then((person) => {
+        const link = person.resource('houze');
+
+        t.equal(typeof link.then, 'function', 'should return a promise');
+
+        return link;
+      })
+      .catch(err => {
+        t.equal(err.message, 'The resource <houze> does not exists', 'should reject the promise');
+      });
+  });
+});
+
 test('Resource get attribute', (t) => {
   t.plan(1);
 

@@ -62,6 +62,16 @@ export default class Resource {
     return null;
   }
 
+  resource (name) {
+    const link = this.link(name);
+
+    if (!link) {
+      return Promise.reject(new Error('The resource <' + name + '> does not exists'));
+    }
+    
+    return Promise.resolve(link.fetch());
+  }
+
   url () {
     const { endpoint } = this.options;
 
