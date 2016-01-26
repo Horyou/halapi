@@ -23,3 +23,5 @@ export default class HalApi {
     return Resource.fetch(path, this.options);
   }
 }
+
+HalApi.Resource = Resource;
