@@ -251,3 +251,17 @@ test('Resource: fetch', (t) => {
     });
   });
 });
+
+test('Resource: save', (t) => {
+  const resource = new Resource('/foo');
+
+  t.ok(isEmpty(resource.data()), 'body should not be set before fetch');
+
+  t.ok(resource.save() === resource, 'should return the resource for chaining');
+
+  resource.save({ foo: 'bar' });
+
+  t.equal(resource.data(), { foo: 'bar' }, 'should save the data');
+
+  t.end();
+});
