@@ -40,28 +40,32 @@ export default class Resource {
     return (this._data || {})[name];
   }
 
-  links () {
-    return this._data[this.options.linkAttr];
+  links (name) {
+    const _links = this._data[this.linkAttr] || {};
+
+    if (!name) {
+      return _links;
+    }
+
+    return _links[name] ? _links[name] : _links;
   }
 
   link (name) {
-    const _links = this.links();
-
-    if (!_links) {
+    if (!this.hasLink(name)) {
       return null;
     }
 
-    const _link = _links[name];
+    return new Resource(this.links(name).href, this.options);
+  }
 
-    if (!_link) {
-      return null;
+  hasLink (name) {
+    const link = this.links(name);
+
+    if (!link) {
+      return false;
     }
 
-    if (_link.href) {
-      return new Resource(_link.href, this.options);
-    }
-
-    return null;
+    return !!link.href;
   }
 
   resource (name) {
