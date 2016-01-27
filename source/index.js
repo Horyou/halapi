@@ -14,9 +14,11 @@ export default class HalApi {
   }
 
   request (fn) {
-    if (fn) {
-      Resource.request = fn;
+    if (!fn) {
+      throw new Error('Should provide a function');
     }
+
+    Resource.request = fn;
   }
 
   resource (path) {
