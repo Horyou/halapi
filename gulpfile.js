@@ -12,7 +12,6 @@ var tapColorize = require('tap-colorize');
 var path = require('path');
 require('colors');
 
-
 var dirs = {
   source: 'source',
   dist: 'build',
@@ -24,7 +23,7 @@ var dirs = {
 
 var files = {
   test: 'test/**/*.js',
-  testBuild: path.join(dirs.testBuild, '/**/*.spec.js'),
+  testBuild: path.join(dirs.testBuild, '/**/*.js'),
   source: path.join(dirs.source, '/**/*.js'),
   sourceBuild: path.join(dirs.sourceBuild, '/**/*.js'),
   entryPoint: dirs.sourceBuild + '/index.js'
@@ -51,9 +50,7 @@ var _build = function (src, dest, srcRoot) {
 };
 
 var _test = function () {
-  return gulp.src(files.testBuild, {
-      read: false
-    })
+  return gulp.src(files.testBuild)
     .pipe(tape({
       reporter: tapColorize()
     }));
