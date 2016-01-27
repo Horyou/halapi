@@ -1,3 +1,17 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/stephanebachelier/halapi/compare/0.3.0...v0.3.0) (2016-01-27)
+
+
+### Features
+
+* **api:** make resource return a resource and a fetch promise ([1d584d3](https://github.com/stephanebachelier/halapi/commit/1d584d3))
+* **api:** throw if no request fn provided ([ef55803](https://github.com/stephanebachelier/halapi/commit/ef55803))
+* **resource:** add default options ([8e00eee](https://github.com/stephanebachelier/halapi/commit/8e00eee))
+* **resource:** export resource ([e0b8b7f](https://github.com/stephanebachelier/halapi/commit/e0b8b7f))
+* **resource:** make save chainable ([972f780](https://github.com/stephanebachelier/halapi/commit/972f780))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/stephanebachelier/halapi/compare/0.2.0...v0.2.0) (2016-01-22)
 

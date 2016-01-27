@@ -56,7 +56,8 @@
       }
     }]);
 
-    function Resource(path, options) {
+    function Resource(path) {
+      var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
       babelHelpers.classCallCheck(this, Resource);
 
       this._path = path;
@@ -68,6 +69,8 @@
       key: 'save',
       value: function save(body) {
         this._data = body;
+
+        return this;
       }
     }, {
       key: 'path',
@@ -91,29 +94,34 @@
       }
     }, {
       key: 'links',
-      value: function links() {
-        return this._data[this.options.linkAttr];
+      value: function links(name) {
+        var _links = this._data[this.linkAttr] || {};
+
+        if (!name) {
+          return _links;
+        }
+
+        return _links[name] ? _links[name] : _links;
       }
     }, {
       key: 'link',
       value: function link(name) {
-        var _links = this.links();
-
-        if (!_links) {
+        if (!this.hasLink(name)) {
           return null;
         }
 
-        var _link = _links[name];
+        return new Resource(this.links(name).href, this.options);
+      }
+    }, {
+      key: 'hasLink',
+      value: function hasLink(name) {
+        var link = this.links(name);
 
-        if (!_link) {
-          return null;
+        if (!link) {
+          return false;
         }
 
-        if (_link.href) {
-          return new Resource(_link.href, this.options);
-        }
-
-        return null;
+        return !!link.href;
       }
     }, {
       key: 'resource',
@@ -164,18 +172,35 @@
     babelHelpers.createClass(HalApi, [{
       key: 'request',
       value: function request(fn) {
-        if (fn) {
-          Resource.request = fn;
+        if (!fn) {
+          throw new Error('Should provide a function');
         }
+
+        Resource.request = fn;
       }
     }, {
       key: 'resource',
       value: function resource(path) {
-        return Resource.fetch(path, this.options);
+        return new Resource(path, this.options);
+      }
+
+      // syntactic sugar
+
+    }, {
+      key: 'fetch',
+      value: function fetch(path) {
+        return this.resource(path, this.options).fetch();
+      }
+    }, {
+      key: 'linkAttr',
+      value: function linkAttr() {
+        return this.options.linkAttr;
       }
     }]);
     return HalApi;
   })();
+
+  HalApi.Resource = Resource;
 
   return HalApi;
 

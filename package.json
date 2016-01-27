@@ -1,6 +1,6 @@
 {
   "name": "halapi",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "My node module",
   "main": "dist/halapi.umd.js",
   "scripts": {
