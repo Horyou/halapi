@@ -1,5 +1,6 @@
-<a name="0.3.0"></a>
-# [0.3.0](https://github.com/stephanebachelier/halapi/compare/0.3.0...v0.3.0) (2016-01-27)
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/stephanebachelier/halapi/compare/0.3.0...1.0.0) (2016-01-27)
 
 
 ### Features
@@ -12,8 +13,8 @@
 
 
 
-<a name="0.2.0"></a>
-# [0.2.0](https://github.com/stephanebachelier/halapi/compare/0.2.0...v0.2.0) (2016-01-22)
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/stephanebachelier/halapi/compare/0.2.0...0.3.0) (2016-01-22)
 
 
 ### Bug Fixes
@@ -34,8 +35,8 @@
 
 
 
-<a name="0.1.3"></a>
-## [0.1.3](https://github.com/stephanebachelier/halapi/compare/0.1.3...v0.1.3) (2016-01-12)
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/stephanebachelier/halapi/compare/0.1.3...0.2.0) (2016-01-12)
 
 
 ### Bug Fixes
@@ -48,8 +49,8 @@
 
 
 
-<a name="0.1.2"></a>
-## [0.1.2](https://github.com/stephanebachelier/halapi/compare/0.1.2...v0.1.2) (2016-01-12)
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/stephanebachelier/halapi/compare/0.1.2...0.1.3) (2016-01-12)
 
 
 ### Bug Fixes
@@ -58,8 +59,8 @@
 
 
 
-<a name="0.1.1"></a>
-## [0.1.1](https://github.com/stephanebachelier/halapi/compare/0.1.1...v0.1.1) (2016-01-12)
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/stephanebachelier/halapi/compare/0.1.1...0.1.2) (2016-01-12)
 
 
 ### Bug Fixes
@@ -68,14 +69,14 @@
 
 
 
-<a name="0.1.0"></a>
-# [0.1.0](https://github.com/stephanebachelier/halapi/compare/0.1.0...v0.1.0) (2015-12-17)
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/stephanebachelier/halapi/compare/0.1.0...0.1.1) (2015-12-17)
 
 
 
 
 <a name="0.1.0"></a>
-# 0.1.0 (2015-12-17)
+# [0.1.0](https://github.com/stephanebachelier/halapi/compare/87e8fca...0.1.0) (2015-12-17)
 
 
 ### Bug Fixes
@@ -96,6 +97,3 @@
 * **resource:** add links property ([ff5f90c](https://github.com/stephanebachelier/halapi/commit/ff5f90c))
 * **resource:** save the response body to data ([f53fbb5](https://github.com/stephanebachelier/halapi/commit/f53fbb5))
 * **utils:** add url helper ([807dca3](https://github.com/stephanebachelier/halapi/commit/807dca3))
-
-
-
