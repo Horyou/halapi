@@ -9,7 +9,7 @@
     "tagName": "%s",
     "tagAnnotation": "Release %s",
     "buildCommand": "npm run build",
-    "changelogCommand": "conventional-changelog -p angular -i CHANGELOG.md -w",
+    "changelogCommand": "conventional-changelog -p angular -r 1 -i CHANGELOG.md -w",
     "github": {
         "release": true,
         "releaseName": "Release %s",
