@@ -6,8 +6,6 @@ import { server } from './helpers';
 import Resource from '../source/resource';
 
 test('Halapi default options', (t) => {
-  t.plan(4);
-
   t.throws(() => {
     const api = new Halapi();
   }, 'missing endpoint property', 'should throw if no endpoint property');
@@ -20,6 +18,8 @@ test('Halapi default options', (t) => {
   t.ok(has(api.options, 'linkAttr'), 'linkAttr should be defined');
   t.equal(get(api.options, 'linkAttr'), 'links', 'linkAttr should equal `links`');
   t.equal(get(api.options, 'endpoint'), endpoint, 'should have endpoint option');
+
+  t.end();
 });
 
 // test('Halapi request', (t) => {
@@ -33,7 +33,6 @@ test('Halapi default options', (t) => {
 // });
 
 test('Halapi resource', (t) => {
-  t.plan(2);
 
   server().then((api) => {
     const result = api.resource('/api');
@@ -41,7 +40,8 @@ test('Halapi resource', (t) => {
     t.equal(typeof result.then, 'function');
     result.then((resource) => {
       t.ok(resource instanceof Resource, 'should received a resource');
-      // t.end();
+
+      t.end();
     });
   });
 });

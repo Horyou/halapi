@@ -6,8 +6,6 @@ import { isUndefined, isEmpty } from 'lodash/lang';
 import { server, apiServer } from './helpers';
 
 test('Resource fetch', (t) => {
-  t.plan(2);
-
   server().then((api) => {
     const result = Resource.fetch('/api', api.options);
 
@@ -15,13 +13,12 @@ test('Resource fetch', (t) => {
 
     result.then((resource) => {
       t.ok(resource instanceof Resource, 'should return a Resource instance');
+      t.end();
     });
   });
 });
 
 test('Resource data', (t) => {
-  t.plan(2);
-
   server().then((api) => {
     Resource
       .fetch('/api', api.options)
@@ -33,8 +30,6 @@ test('Resource data', (t) => {
 });
 
 test('Resource links with default `links` attributes', (t) => {
-  t.plan(2);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -48,8 +43,6 @@ test('Resource links with default `links` attributes', (t) => {
 });
 
 test('Resource links with `_links` attributes', (t) => {
-  t.plan(2);
-
   apiServer('resource-_links.json').then((api) => {
     api.options.linkAttr = '_links';
 
@@ -65,8 +58,6 @@ test('Resource links with `_links` attributes', (t) => {
 });
 
 test('Resource unexisting link', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -77,8 +68,6 @@ test('Resource unexisting link', (t) => {
 });
 
 test('Resource link', (t) => {
-  t.plan(2);
-
   apiServer('resource-links.json').then((api) => {
     const resource = new Resource('/person/1', api.options);
 
@@ -93,8 +82,6 @@ test('Resource link', (t) => {
 });
 
 test('Resource bad link', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -107,8 +94,6 @@ test('Resource bad link', (t) => {
 });
 
 test('Resource without links', (t) => {
-  t.plan(1);
-
   apiServer('resource-nolinks.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -121,8 +106,6 @@ test('Resource without links', (t) => {
 });
 
 test('Resource linked resource', (t) => {
-  t.plan(3);
-
   apiServer('resource-links.json').then((api) => {
     const resource = new Resource('/person/1', api.options);
 
@@ -142,8 +125,6 @@ test('Resource linked resource', (t) => {
 });
 
 test('Resource: resource helper with a valid link', (t) => {
-  t.plan(4);
-
   apiServer('resource-links.json').then((api) => {
     Resource.fetch('/person/1', api.options)
       .then((person) => {
@@ -162,8 +143,6 @@ test('Resource: resource helper with a valid link', (t) => {
 });
 
 test('Resource: resource helper with an invalid link', (t) => {
-  t.plan(4);
-
   apiServer('resource-links.json').then((api) => {
     Resource.fetch('/person/1', api.options)
       .then((person) => {
@@ -180,8 +159,6 @@ test('Resource: resource helper with an invalid link', (t) => {
 });
 
 test('Resource get attribute', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -192,8 +169,6 @@ test('Resource get attribute', (t) => {
 });
 
 test('Resource get wrong attribute', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -204,8 +179,6 @@ test('Resource get wrong attribute', (t) => {
 });
 
 test('Resource: get attribute of a linked resource', (t) => {
-  t.plan(2);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -219,8 +192,6 @@ test('Resource: get attribute of a linked resource', (t) => {
 });
 
 test('Resource: data fields', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -233,8 +204,6 @@ test('Resource: data fields', (t) => {
 });
 
 test('Resource: response data', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -245,8 +214,6 @@ test('Resource: response data', (t) => {
 });
 
 test('Resource: request path', (t) => {
-  t.plan(1);
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -257,8 +224,6 @@ test('Resource: request path', (t) => {
 });
 
 test('Resource: url', (t) => {
-  t.plan(1)
-
   apiServer('resource-links.json').then((api) => {
     Resource
       .fetch('/person/1', api.options)
@@ -271,8 +236,6 @@ test('Resource: url', (t) => {
 })
 
 test('Resource: fetch', (t) => {
-  t.plan(4);
-
   apiServer('resource-links.json').then((api) => {
     const resource = new Resource('/person/1', api.options);
 
