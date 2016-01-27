@@ -298,7 +298,7 @@ test('Resource: save', (t) => {
 
   resource.save({ foo: 'bar' });
 
-  t.equal(resource.data(), { foo: 'bar' }, 'should save the data');
+  t.deepEqual(resource.data(), { foo: 'bar' }, 'should save the data');
 
   t.end();
 });
