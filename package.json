@@ -4,9 +4,10 @@
   "description": "My node module",
   "main": "dist/halapi.umd.js",
   "scripts": {
-    "test:ci": "gulp build:all && tape build/test/*.spec.js | colortape", 
+    "test:ci": "gulp build:all && tape build/test/*.spec.js | colortape",
     "test": "gulp build:all && tape build/test/*.spec.js | colortape | tap-notify",
-    "build": "gulp build:all && rollup -c rollup.umd.js"
+    "build": "gulp build:all && rollup -c rollup.umd.js",
+    "coveralls": "gulp coveralls"
   },
   "repository": "stephanebachelier/halapi",
   "author": {
