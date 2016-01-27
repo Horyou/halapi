@@ -33,15 +33,48 @@ test('Halapi default options', (t) => {
 // });
 
 test('Halapi resource', (t) => {
+  const api = new Halapi({
+    endpoint: 'foo'
+  });
+  const resource = api.resource('/api');
 
+  t.ok(resource instanceof Resource, 'should received a resource');
+  t.equal(resource.path(), '/api', 'should received a resource');
+
+  t.end();
+});
+
+test('Halapi fetch', (t) => {
   server().then((api) => {
-    const result = api.resource('/api');
+    const result = api.fetch('/api');
 
-    t.equal(typeof result.then, 'function');
-    result.then((resource) => {
+    t.equal(typeof result.then, 'function', 'should be a promise');
+    return result.then((resource) => {
       t.ok(resource instanceof Resource, 'should received a resource');
 
       t.end();
     });
   });
+});
+
+
+test('Halapi linkAttr', (t) => {
+  const api = new Halapi({
+    endpoint: 'foo'
+  });
+  const linkAttr = api.linkAttr();
+
+  t.ok(linkAttr === 'links', 'should return the default value for linkAttr');
+  t.end();
+});
+
+test('Halapi linkAttr', (t) => {
+  const api = new Halapi({
+    endpoint: 'foo',
+    linkAttr: '__foo__'
+  });
+  const linkAttr = api.linkAttr();
+
+  t.ok(linkAttr === '__foo__', 'should return the provided value for linkAttr');
+  t.end();
 });

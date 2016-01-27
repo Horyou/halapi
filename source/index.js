@@ -20,7 +20,16 @@ export default class HalApi {
   }
 
   resource (path) {
-    return Resource.fetch(path, this.options);
+    return new Resource(path, this.options);
+  }
+
+  // syntactic sugar
+  fetch (path) {
+    return this.resource(path, this.options).fetch();
+  }
+
+  linkAttr () {
+    return this.options.linkAttr;
   }
 }
 
