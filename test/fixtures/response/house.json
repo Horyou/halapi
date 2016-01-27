@@ -1,0 +1,13 @@
+{
+  "hid": 123,
+  "name": "The little house",
+  "links": {
+    "self": {
+      "href": "/person/1/house"
+    },
+    "address": {
+      "href": "/house/1/address"
+    },
+    "badLink": {}
+  }
+}

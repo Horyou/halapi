@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "firstname": "John",
+  "lastname": "Foo",
+  "links": {
+    "self": {
+      "href": "/person/1"
+    },
+    "house": {
+      "href": "/person/1/house"
+    }
+  }
+}
