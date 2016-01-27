@@ -68,10 +68,15 @@ var _clean = function (dir) {
   };
 };
 
-//Test tasks
+// Test tasks
 gulp.task('source:build', _build(files.source, dirs.sourceBuild, dirs.sourceRoot));
 gulp.task('test:build', _build(files.test, dirs.testBuild, dirs.testRoot));
-gulp.task('build:all', ['source:build', 'test:build']);
+gulp.task('test:fixtures', function () {
+  return gulp.src(path.join(dirs.testRoot, 'fixtures/**/*.json'))
+    .pipe(gulp.dest(path.join(dirs.testBuild, 'fixtures')));
+});
+
+gulp.task('build:all', ['source:build', 'test:build', 'test:fixtures']);
 
 
 gulp.task('pre-test', ['build:all'], function () {
