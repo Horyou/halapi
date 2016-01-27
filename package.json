@@ -4,6 +4,7 @@
   "description": "My node module",
   "main": "dist/halapi.umd.js",
   "scripts": {
+    "test:ci": "gulp build:all && tape build/test/*.spec.js | colortape", 
     "test": "gulp build:all && tape build/test/*.spec.js | colortape | tap-notify",
     "build": "gulp build:all && rollup -c rollup.umd.js"
   },
@@ -34,6 +35,7 @@
     "gulp-eslint": "^1.1.1",
     "gulp-istanbul": "^0.10.3",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-tape": "0.0.7",
     "mocha": "^2.3.4",
     "mz": "^2.1.0",
     "pify": "^2.3.0",
