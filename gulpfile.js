@@ -24,7 +24,7 @@ var dirs = {
 
 var files = {
   test: 'test/**/*.js',
-  testBuild: path.join(dirs.testBuild, '/**/*.js'),
+  testBuild: path.join(dirs.testBuild, '/**/*.spec.js'),
   source: path.join(dirs.source, '/**/*.js'),
   sourceBuild: path.join(dirs.sourceBuild, '/**/*.js'),
   entryPoint: dirs.sourceBuild + '/index.js'
