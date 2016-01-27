@@ -1,9 +1,10 @@
 'use strict';
 import Halapi from '../source';
-import test from 'tape';
-import { has, get } from 'lodash/object';
-import { server } from './helpers';
 import Resource from '../source/resource';
+import asyncTest from './async-test';
+import test from 'tape';
+
+import { has, get } from 'lodash/object';
 
 test('Halapi default options', (t) => {
   t.throws(() => {
@@ -22,20 +23,46 @@ test('Halapi default options', (t) => {
   t.end();
 });
 
-// test('Halapi request', (t) => {
-//   t.plan(1);
-//
-//   server().then((api) => {
-//     const result = api.request('/api');
-//
-//     t.equal(typeof result.then, 'function');
-//   });
-// });
+test('Halapi request', (t) => {
+  const api = new Halapi({ endpoint: 'foo' });
+
+  t.throws(() => {
+    api.fetch('/foo/bar')
+  }, 'Should provide a function', 'should throw if request has no function');
+
+  t.end();
+});
+
+test('Halapi request', (t) => {
+  const api = new Halapi({ endpoint: 'foo' });
+  const fn = function () {
+    return 'foo';
+  }
+
+  api.request(fn);
+
+  t.ok(Resource.request === fn, 'should add function to Resource');
+
+  t.end();
+});
+
+asyncTest('Halapi fetch', (t, before, done) => {
+  before();
+
+  const api = new Halapi({ endpoint: 'foo' });
+  const result = api.fetch('/api');
+
+  t.equal(typeof result.then, 'function', 'should be a promise');
+
+  result.then(resource => {
+    t.ok(resource instanceof Resource, 'should received a resource');
+
+    done();
+  });
+});
 
 test('Halapi resource', (t) => {
-  const api = new Halapi({
-    endpoint: 'foo'
-  });
+  const api = new Halapi({ endpoint: 'foo' });
   const resource = api.resource('/api');
 
   t.ok(resource instanceof Resource, 'should received a resource');
@@ -43,20 +70,6 @@ test('Halapi resource', (t) => {
 
   t.end();
 });
-
-test('Halapi fetch', (t) => {
-  server().then((api) => {
-    const result = api.fetch('/api');
-
-    t.equal(typeof result.then, 'function', 'should be a promise');
-    return result.then((resource) => {
-      t.ok(resource instanceof Resource, 'should received a resource');
-
-      t.end();
-    });
-  });
-});
-
 
 test('Halapi linkAttr', (t) => {
   const api = new Halapi({
