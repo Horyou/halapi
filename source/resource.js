@@ -20,6 +20,8 @@ export default class Resource {
 
   save (body) {
     this._data = body;
+
+    return this;
   }
 
   path () {
