@@ -39,7 +39,7 @@ test('Halapi resource', (t) => {
   const resource = api.resource('/api');
 
   t.ok(resource instanceof Resource, 'should received a resource');
-  t.equal(resource.path(), '/api', 'should received a resource');
+  t.equal(resource.path(), '/api', 'should have the correct path');
 
   t.end();
 });
