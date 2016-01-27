@@ -49,6 +49,7 @@
     "rollup-plugin-npm": "^1.1.0",
     "source-map-support": "^0.3.3",
     "superagent": "^1.5.0",
+    "tap-colorize": "^1.2.0",
     "tape": "^4.2.2"
   }
 }
