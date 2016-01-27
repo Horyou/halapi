@@ -12,7 +12,7 @@ export default class Resource {
     return resource.fetch();
   }
 
-  constructor (path, options) {
+  constructor (path, options = {}) {
     this._path = path;
     this.options = options;
     this.linkAttr = options.linkAttr || 'links';
